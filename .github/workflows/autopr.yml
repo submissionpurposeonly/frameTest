@@ -13,5 +13,8 @@ jobs:
 
       - name: Run AutoPR
         uses: docker://ghcr.io/irgolic/autopr:v0.1.2
+        env:
+          # ↓↓↓ 这是新添加的部分：把密钥传递给 AutoPR 程序 ↓↓↓
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
