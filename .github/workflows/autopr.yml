@@ -2,13 +2,16 @@ name: AutoPR
 
 on:
   issues:
-    # 修改这里！我们只关心“贴上标签”这个动作
     types: [labeled]
 
 jobs:
   run_autopr:
     runs-on: ubuntu-latest
     steps:
+      # ↓↓↓ 添加这个至关重要的“检出代码”步骤 ↓↓↓
+      - name: Check out repository
+        uses: actions/checkout@v4
+
       - name: Run AutoPR
         uses: docker://ghcr.io/irgolic/autopr:v0.1.2
         with:
