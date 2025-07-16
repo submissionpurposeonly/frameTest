@@ -1,0 +1,15 @@
+name: AutoPR
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  run_autopr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run AutoPR
+        # 这是关键，我们使用项目作者推荐的 v0.1.2 版本，这个版本会自动根据Issue生成PR
+        uses: docker://ghcr.io/irgolic/autopr:v0.1.2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
