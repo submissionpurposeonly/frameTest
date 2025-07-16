@@ -1,0 +1,8 @@
+import summarizer_engine_v3
+
+# Generate project summary
+summary = summarizer_engine_v3.summarize_project()
+
+# Save to temporary location
+with open("temp_summary.txt", "w") as temp_file:
+    temp_file.write(summary)
